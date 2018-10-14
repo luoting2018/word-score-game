@@ -150,7 +150,36 @@ function getAvailableLetter(){
 
 function findWordToUse(){
  //TODO Your job starts here.
-	alert("Your code needs to go here");	
+	alert("Your code needs to go here");
+	storageWord=new Array();
+	for(var p=0; BAG_OF_LETTERS.length>2; p++){
+	storageScore[p]=0;
+		shortStorage=new Array();
+		for(var ii=0;ii<YOUR_HAND.length;i++){
+		shortStorage[ii]=YOUR_HAND[ii].letter;
+			storageScore[p]=storageScore[p]+YOUR_HAND[ii].pointsWhenLettersUsed;
+		}
+		storageWord[p]=shortStorage.join("");
+		retireHand();
+	}
+	for(var i=0;i<storageWord.length;i++){
+	if(!isThisAWord(storageWord[i])){
+	storageWord.splice(i,1);
+		i=i-1;
+		console.log("This is not a vailid word");
+	}
+	}
+	var getAWordScoreMax=0;
+	for(var i=0;i<storageWord.length;i++){
+	if(storageScore[i]>getAWordScoreMax){
+	getAWordScoreMax=storageScore[i];
+	}
+	}
+	SCORE=getAWordScoreMax;
+	clearClasses();
+	YOUR_HAND=new Array();
+	console.log(SCORE);
+	displayHand();
 }
 function humanFindWordToUse(){
 	
